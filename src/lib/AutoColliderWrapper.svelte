@@ -5,6 +5,7 @@
 	import { T } from '@threlte/core';
 	import { RigidBody as RapierRigidBody } from '@dimforge/rapier3d-compat';
 	import { game } from './main.svelte';
+	import { base } from '$app/paths';
 
 	let ref:
 		| AutoColliders<{
@@ -28,6 +29,7 @@
 <T.Group bind:ref={group}>
 	<RigidBody
 		enabledTranslations={[true, true, false]}
+		enabledRotations={[false, false, true]}
 		bind:rigidBody
 		type={'dynamic'}
 		oncontact={(event) => {
@@ -40,6 +42,8 @@
 					return;
 				}
 
+				game.playPop = true;
+				
 				// get median position of the two particles
 				const medianPosition = new Vector3(
 					(rigidBody.translation().x + event.targetRigidBody.translation().x) / 2,
@@ -60,7 +64,6 @@
 				// spawn a new particle at the median position
 				game.particles.push({
 					position: [medianPosition.x, medianPosition.y, medianPosition.z],
-					rotation: [Math.random() * 6, Math.random() * 6, Math.random() * 6],
 					id: id + 1,
 					random: Math.random().toString()
 				});
@@ -84,6 +87,7 @@
 					});
 				}}
 			>
+
 				{@render children?.({ ref })}
 			</Suspense>
 		</AutoColliders>

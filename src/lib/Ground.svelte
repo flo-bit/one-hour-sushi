@@ -17,6 +17,10 @@
 		</T.Group>
 	</T.Group>
 
+
+	<T.Group position={[0, 105, 0]}>
+		<Collider shape={'cuboid'} args={[4, 100, 4]}></Collider>
+	</T.Group>
 	<!-- walls -->
 	<T.Group position={[0, 2, 2]}>
 		<T.Mesh receiveShadow>

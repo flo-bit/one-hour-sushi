@@ -1,9 +1,9 @@
 <script>
 	import { T } from '@threlte/core';
-	import { interactivity, OrbitControls, Sky } from '@threlte/extras';
+	import { AudioListener, interactivity, OrbitControls, Sky } from '@threlte/extras';
 	import Particle from './Particle.svelte';
 	import Ground from './Ground.svelte';
-	import { game, ids } from './main.svelte';
+	import { game, ids, rotate } from './main.svelte';
 	import { base } from '$app/paths';
 	import GltfModel from './GLTFModel.svelte';
 	import { Debug } from '@threlte/rapier';
@@ -17,8 +17,7 @@
 	}
 </script>
 
-<T.OrthographicCamera makeDefault zoom={100} position={[0, 0, 10]}>
-</T.OrthographicCamera>
+<T.OrthographicCamera makeDefault zoom={100} position={[0, 0, 10]}></T.OrthographicCamera>
 
 <!-- <T.PerspectiveCamera makeDefault fov={75} position={[0, 0, 10]}>
 	<OrbitControls />
@@ -30,16 +29,20 @@
 
 <svelte:window onpointermove={updateX} onpointerup={updateX} />
 
-{#key game.nextRotation}
+{#key game.nextId}
 	<T.Group>
-		<T.Mesh position={[x, 2.5, 0]} rotation={game.nextRotation} scale={1 + game.nextId * 0.2} >
+		<T.Mesh
+			position={[x, 2.5, 0]}
+			rotation={[0, rotate[game.nextId] ? Math.PI / 2 : 0, 0]}
+			scale={1 + game.nextId * 0.2}
+		>
 			<GltfModel source={base + '/models/' + ids[game.nextId]} />
 		</T.Mesh>
 	</T.Group>
 {/key}
 
 {#each game.particles as particle, index (particle.random)}
-	<Particle position={particle.position} rotation={particle.rotation} id={particle.id} {index} />
+	<Particle position={particle.position} id={particle.id} {index} />
 {/each}
 
 <Sky />
