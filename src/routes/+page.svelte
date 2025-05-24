@@ -3,24 +3,27 @@
 	import Scene from '$lib/Scene.svelte';
 	import { Canvas } from '@threlte/core';
 	import { World } from '@threlte/rapier';
+	import { ACESFilmicToneMapping } from 'three';
 </script>
 
 <div class="h-screen w-screen">
-	<Canvas>
+	<Canvas toneMapping={ACESFilmicToneMapping}>
 		<World>
 			<Scene />
 		</World>
 	</Canvas>
 </div>
 
-<button
-	class="absolute top-0 left-0"
-	on:click={() => {
+<svelte:window
+	onpointerup={(event) => {
+		// get percentage of the screen that was clicked on x
+		const x = event.clientX / window.innerWidth;
+
 		game.particles.push({
-			position: [Math.random() * 2 - 1, 3, 0],
+			position: [(x - 0.5) * 3.4, 3, 0],
 			rotation: [Math.random() * 6, Math.random() * 6, Math.random() * 6],
 			id: 0,
 			random: Math.random().toString()
 		});
-	}}>Add Particle</button
->
+	}}
+/>

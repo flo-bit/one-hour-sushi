@@ -43,9 +43,9 @@
 
 				// get median position of the two particles
 				const medianPosition = new Vector3(
-					(event.targetRigidBody.translation().x + rigidBody.translation().x) / 2,
-					(event.targetRigidBody.translation().y + rigidBody.translation().y) / 2,
-					(event.targetRigidBody.translation().z + rigidBody.translation().z) / 2
+					rigidBody.translation().x,
+					rigidBody.translation().y,
+					rigidBody.translation().z
 				);
 
 				let lowerIndex = Math.min(index, event.targetRigidBody.userData.index);
