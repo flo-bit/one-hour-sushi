@@ -3,16 +3,9 @@
 	import AutoColliderWrapper from './AutoColliderWrapper.svelte';
 	import GltfModel from './GLTFModel.svelte';
 	import { T } from '@threlte/core';
+	import { ids } from './main.svelte';
 
 	let { position, rotation, id, index } = $props();
-
-	let ids = [
-		'Food_Chukaman.gltf',
-		'Food_Dango.gltf',
-		'Food_EbiNigiri.gltf',
-		'Food_Gyoza.gltf',
-		'Food_MaguroNigiri.gltf'
-	];
 </script>
 
 <T.Group {position} {rotation}>

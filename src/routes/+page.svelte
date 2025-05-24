@@ -20,10 +20,13 @@
 		const x = event.clientX / window.innerWidth;
 
 		game.particles.push({
-			position: [(x - 0.5) * 3.4, 3, 0],
-			rotation: [Math.random() * 6, Math.random() * 6, Math.random() * 6],
-			id: 0,
+			position: [(x - 0.5) * 3.4, 2, 0],
+			rotation: game.nextRotation,
+			id: game.nextId,
 			random: Math.random().toString()
 		});
+
+		game.nextRotation = [Math.random() * 6, Math.random() * 6, Math.random() * 6];
+		game.nextId = Math.floor(Math.random() * 3);
 	}}
 />

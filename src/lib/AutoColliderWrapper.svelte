@@ -37,7 +37,6 @@
 				let higherIndex = Math.max(index, event.targetRigidBody.userData.index);
 				// only if we are the lower index particle
 				if (higherIndex !== index) {
-					console.log('contact with self');
 					return;
 				}
 

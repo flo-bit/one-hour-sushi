@@ -1,13 +1,15 @@
 <script lang="ts">
 	import { T } from '@threlte/core';
 	import { AutoColliders, Collider } from '@threlte/rapier';
+
+	let color = '#d6d3d1';
 </script>
 
-<T.Group rotation.y={Math.PI / 2}>
+<T.Group rotation.y={Math.PI / 2} position.y={-2}>
 	<T.Group position={[0, -1, 0]}>
 		<T.Mesh receiveShadow>
 			<T.BoxGeometry args={[4, 0.4, 4]} />
-			<T.MeshStandardMaterial />
+			<T.MeshStandardMaterial color={color} />
 		</T.Mesh>
 
 		<T.Group position={[0, -1.8, 0]}>
@@ -16,24 +18,24 @@
 	</T.Group>
 
 	<!-- walls -->
-	<T.Group position={[0, 1, 2]}>
+	<T.Group position={[0, 2, 2]}>
 			<T.Mesh receiveShadow>
-				<T.BoxGeometry args={[4, 4, 0.4]} />
-				<T.MeshStandardMaterial />
+				<T.BoxGeometry args={[4, 6, 0.4]} />
+				<T.MeshStandardMaterial color={color} />
 			</T.Mesh>
 			
-		<T.Group position={[0, -2, 1.8]}>
+		<T.Group position={[0, -1, 1.8]}>
 			<Collider shape={'cuboid'} args={[4, 4, 2]}></Collider>
 		</T.Group>
 	</T.Group>
-	<T.Group position={[0, 1, -2]}>
+	<T.Group position={[0, 2, -2]}>
 
 			<T.Mesh receiveShadow>
-				<T.BoxGeometry args={[4, 4, 0.4]} />
-				<T.MeshStandardMaterial />
+				<T.BoxGeometry args={[4, 6, 0.4]} />
+				<T.MeshStandardMaterial color={color} />
 			</T.Mesh>
 
-		<T.Group position={[0, -2, -1.8]}>
+		<T.Group position={[0, -1, -1.8]}>
 			<Collider shape={'cuboid'} args={[4, 4, 2]}></Collider>
 		</T.Group>
 	</T.Group>
