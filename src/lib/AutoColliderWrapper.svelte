@@ -25,9 +25,9 @@
 	let collision = $state(false);
 </script>
 
-<T.Group bind:ref={group} scale={1 + id * 0.2}>
+<T.Group bind:ref={group}>
 	<RigidBody
-	enabledTranslations={[true, true, false]}
+		enabledTranslations={[true, true, false]}
 		bind:rigidBody
 		type={'dynamic'}
 		oncontact={(event) => {
@@ -42,10 +42,12 @@
 
 				// get median position of the two particles
 				const medianPosition = new Vector3(
-					rigidBody.translation().x,
-					rigidBody.translation().y,
-					rigidBody.translation().z
+					(rigidBody.translation().x + event.targetRigidBody.translation().x) / 2,
+					(rigidBody.translation().y + event.targetRigidBody.translation().y) / 2,
+					0
 				);
+
+				console.log(medianPosition);
 
 				let lowerIndex = Math.min(index, event.targetRigidBody.userData.index);
 

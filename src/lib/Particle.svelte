@@ -8,8 +8,8 @@
 	let { position, rotation, id, index } = $props();
 </script>
 
-<T.Group {position} {rotation}>
+<T.Group>
 	<AutoColliderWrapper {id} {index}>
-		<GltfModel source={base + `/models/${ids[id]}`} />
+		<GltfModel source={base + `/models/${ids[id]}`} {position} {rotation} scale={1 + id * 0.2}/>
 	</AutoColliderWrapper>
 </T.Group>

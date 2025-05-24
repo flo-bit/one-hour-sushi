@@ -1,11 +1,12 @@
 <script>
 	import { T } from '@threlte/core';
-	import { interactivity, Sky } from '@threlte/extras';
+	import { interactivity, OrbitControls, Sky } from '@threlte/extras';
 	import Particle from './Particle.svelte';
 	import Ground from './Ground.svelte';
 	import { game, ids } from './main.svelte';
 	import { base } from '$app/paths';
 	import GltfModel from './GLTFModel.svelte';
+	import { Debug } from '@threlte/rapier';
 
 	interactivity();
 
@@ -30,8 +31,8 @@
 <svelte:window onpointermove={updateX} onpointerup={updateX} />
 
 {#key game.nextRotation}
-	<T.Group scale={1 + game.nextId * 0.2}>
-		<T.Mesh position={[x, 2, 0]} rotation={game.nextRotation} >
+	<T.Group>
+		<T.Mesh position={[x, 2.5, 0]} rotation={game.nextRotation} scale={1 + game.nextId * 0.2} >
 			<GltfModel source={base + '/models/' + ids[game.nextId]} />
 		</T.Mesh>
 	</T.Group>
