@@ -18,7 +18,7 @@
 	on:click={() => {
 		game.particles.push({
 			position: [Math.random() * 2 - 1, 3, 0],
-			rotation: [0, 0, Math.random() * 6],
+			rotation: [Math.random() * 6, Math.random() * 6, Math.random() * 6],
 			id: 0,
 			random: Math.random().toString()
 		});

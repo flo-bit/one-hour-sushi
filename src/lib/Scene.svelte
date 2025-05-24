@@ -1,6 +1,6 @@
 <script>
 	import { T, useTask } from '@threlte/core';
-	import { interactivity, OrbitControls } from '@threlte/extras';
+	import { interactivity, OrbitControls, Sky } from '@threlte/extras';
 	import { Debug } from '@threlte/rapier';
 	import { Spring } from 'svelte/motion';
 	import Particle from './Particle.svelte';
@@ -24,3 +24,5 @@
 {#each game.particles as particle, index (particle.random)}
 	<Particle position={particle.position} rotation={particle.rotation} id={particle.id} {index} />
 {/each}
+
+<Sky />

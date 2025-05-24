@@ -27,7 +27,7 @@
 
 <T.Group bind:ref={group} scale={1 + id * 0.2}>
 	<RigidBody
-		lockTranslations={[false, false, true]}
+	enabledTranslations={[true, true, false]}
 		bind:rigidBody
 		type={'dynamic'}
 		oncontact={(event) => {
@@ -59,7 +59,7 @@
 				// spawn a new particle at the median position
 				game.particles.push({
 					position: [medianPosition.x, medianPosition.y, medianPosition.z],
-					rotation: [0, 0, 0],
+					rotation: [Math.random() * 6, Math.random() * 6, Math.random() * 6],
 					id: id + 1,
 					random: Math.random().toString()
 				});
@@ -68,7 +68,7 @@
 		userData={{ id, index }}
 		ccd
 	>
-		<AutoColliders shape="trimesh" bind:this={ref}>
+		<AutoColliders shape="convexHull" bind:this={ref}>
 			<Suspense
 				onload={() => {
 					ref?.refresh?.();
