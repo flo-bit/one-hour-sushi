@@ -1,12 +1,9 @@
 <script>
-	import { T, useTask } from '@threlte/core';
-	import { interactivity, OrbitControls, Sky } from '@threlte/extras';
-	import { Debug } from '@threlte/rapier';
-	import { Spring } from 'svelte/motion';
+	import { T } from '@threlte/core';
+	import { interactivity, Sky } from '@threlte/extras';
 	import Particle from './Particle.svelte';
 	import Ground from './Ground.svelte';
 	import { game, ids } from './main.svelte';
-	import { Audio, AudioListener } from '@threlte/extras';
 	import { base } from '$app/paths';
 	import GltfModel from './GLTFModel.svelte';
 
@@ -20,15 +17,11 @@
 </script>
 
 <T.OrthographicCamera makeDefault zoom={100} position={[0, 0, 10]}>
-	<AudioListener />
 </T.OrthographicCamera>
 
 <!-- <T.PerspectiveCamera makeDefault fov={75} position={[0, 0, 10]}>
 	<OrbitControls />
 </T.PerspectiveCamera> -->
-
-<Audio autoplay loop src={base + '/audio/music.mp3'} />
-
 <T.DirectionalLight position={[0, 10, 10]} castShadow />
 
 <Ground />

@@ -4,6 +4,20 @@
 	import { Canvas } from '@threlte/core';
 	import { World } from '@threlte/rapier';
 	import { ACESFilmicToneMapping } from 'three';
+
+	import { Howl, Howler } from 'howler';
+	import { onMount } from 'svelte';
+	import { base } from '$app/paths';
+
+	onMount(() => {
+		const sound = new Howl({
+			src: [base + '/audio/music.mp3'],
+			loop: true,
+			volume: 0.5
+		});
+
+		sound.play();
+	});
 </script>
 
 <div class="h-screen w-screen">
